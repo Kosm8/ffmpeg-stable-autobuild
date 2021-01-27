@@ -28,13 +28,13 @@ jobs:
         
       - name: 7-Zip FFmpeg win32 custom nonfree
         working-directory: sandbox/win32/ffmpeg_git_with_fdk_aac_${{ env.ffmpeg_version }}
-        run: 7z a ffmpeg-win32-custom-nonfree.7z ffmpeg.exe ffprobe.exe ffplay.exe -mx=9
+        run: 7z a ffmpeg-win32-nonfree.7z ffmpeg.exe ffprobe.exe ffplay.exe -mx=9
           
       - name: Upload FFmpeg win32 custom nonfree
         uses: actions/upload-artifact@v2
         with:
-          name: ffmpeg-${{ env.ffmpeg_version }}-win32-custom-nonfree
-          path: sandbox/win32/ffmpeg_git_with_fdk_aac_${{ env.ffmpeg_version }}/ffmpeg-win32-custom-nonfree.7z
+          name: ffmpeg-${{ env.ffmpeg_version }}-win32-nonfree
+          path: sandbox/win32/ffmpeg_git_with_fdk_aac_${{ env.ffmpeg_version }}/ffmpeg-win32-nonfree.7z
           
   release:
     needs: build
@@ -60,6 +60,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ffmpeg-${{ env.ffmpeg_version }}-win32-custom-nonfree/ffmpeg-win32-custom-nonfree.7z
+          asset_path: ffmpeg-${{ env.ffmpeg_version }}-win32-nonfree/ffmpeg-win32-nonfree.7z
           asset_name: ffmpeg-${{ env.ffmpeg_version }}-win32-custom-nonfree.7z
           asset_content_type: application/x-7z-compressed
