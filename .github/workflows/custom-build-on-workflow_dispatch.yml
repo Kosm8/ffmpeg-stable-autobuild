@@ -24,13 +24,13 @@ jobs:
         run: mv -v ./ffmpeg-windows-build-helpers/* ./
         
       - name: Compile FFmpeg using ffmpeg-windows-build-helpers
-        run: ./cross_compile_ffmpeg.sh --ffmpeg-git-checkout-version=$ffmpeg_version --gcc-cpu-count=2 --disable-nonfree=n --sandbox-ok=y --compiler-flavors=win32 --build-dependencies=y --git-get-latest=y --prefer-stable=n --x265-git-checkout-version=Release_3.4 --build-amd-amf=n --build-libmxf=n --build-intel-qsv=n
+        run: ./cross_compile_ffmpeg.sh --ffmpeg-git-checkout-version=$ffmpeg_version --gcc-cpu-count=2 --disable-nonfree=n --prefer-stable=n --x265-git-checkout-version=Release_3.4 --sandbox-ok=y --compiler-flavors=win32
         
-      - name: 7-Zip FFmpeg win32 custom nonfree
+      - name: 7-Zip FFmpeg win32 nonfree
         working-directory: sandbox/win32/ffmpeg_git_with_fdk_aac_${{ env.ffmpeg_version }}
         run: 7z a ffmpeg-win32-nonfree.7z ffmpeg.exe ffprobe.exe ffplay.exe -mx=9
           
-      - name: Upload FFmpeg win32 custom nonfree
+      - name: Upload FFmpeg win32 nonfree
         uses: actions/upload-artifact@v2
         with:
           name: ffmpeg-${{ env.ffmpeg_version }}-win32-nonfree
@@ -54,12 +54,12 @@ jobs:
           draft: false
           prerelease: false
           
-      - name: Upload FFmpeg win32 custom nonfree Release Asset
+      - name: Upload FFmpeg win32 nonfree Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
           asset_path: ffmpeg-${{ env.ffmpeg_version }}-win32-nonfree/ffmpeg-win32-nonfree.7z
-          asset_name: ffmpeg-${{ env.ffmpeg_version }}-win32-custom-nonfree.7z
+          asset_name: ffmpeg-${{ env.ffmpeg_version }}-win32-nonfree.7z
           asset_content_type: application/x-7z-compressed
