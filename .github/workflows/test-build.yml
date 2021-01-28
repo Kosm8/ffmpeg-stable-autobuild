@@ -24,7 +24,7 @@ jobs:
         run: mv -v ./ffmpeg-windows-build-helpers/* ./
         
       - name: Compile FFmpeg using ffmpeg-windows-build-helpers
-        run: ./cross_compile_ffmpeg.sh --ffmpeg-git-checkout-version=$ffmpeg_version --gcc-cpu-count=2 --git-get-latest=y --disable-nonfree=n --build-amd-amf=n --build-intel-qsv=n --prefer-stable=n --x265-git-checkout-version=Release_3.4 --sandbox-ok=y --compiler-flavors=win32
+        run: ./cross_compile_ffmpeg.sh --ffmpeg-git-checkout-version=$ffmpeg_version --gcc-cpu-count=2 --git-get-latest=y --disable-nonfree=n --prefer-stable=n --x265-git-checkout-version=Release_3.4 --sandbox-ok=y --compiler-flavors=win32
         
       - name: 7-Zip FFmpeg win32 nonfree
         working-directory: sandbox/win32/ffmpeg_git_with_fdk_aac_${{ env.ffmpeg_version }}
