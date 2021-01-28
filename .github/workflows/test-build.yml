@@ -1,4 +1,4 @@
-name: Test Build Custom FFmpeg by workflow_dispatch 0
+name: Test Build Custom FFmpeg by workflow_dispatch
 on:
   workflow_dispatch:
     branches:
