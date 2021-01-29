@@ -1,4 +1,4 @@
-name: Build FFmpeg by workflow_dispatch
+name: Build by workflow_dispatch
 on:
   workflow_dispatch:
     branches:
