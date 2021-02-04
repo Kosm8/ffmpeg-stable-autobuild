@@ -20,18 +20,18 @@ jobs:
       - name: Move ffmpeg-windows-build-helpers
         run: mv -v ./ffmpeg-windows-build-helpers/* ./
         
-      - name: Compile FFmpeg 4.3 using ffmpeg-windows-build-helpers
+      - name: Compile FFmpeg 4.3.2 using ffmpeg-windows-build-helpers
         run: ./cross_compile_ffmpeg.sh --ffmpeg-source-dir=$GITHUB_WORKSPACE/ffmpeg-source --gcc-cpu-count=2 --disable-nonfree=n --build-dependencies=y --git-get-latest=y --prefer-stable=n --x265-git-checkout-version=Release_3.4 --build-amd-amf=n --build-intel-qsv=n --sandbox-ok=y --compiler-flavors=win32
         
-      - name: 7-Zip FFmpeg 4.3 win32 custom nonfree
+      - name: 7-Zip FFmpeg 4.3.2 win32 custom nonfree
         working-directory: ffmpeg-source
-        run: 7z a ffmpeg-4.3-win32-custom-nonfree.7z ffmpeg.exe ffprobe.exe ffplay.exe -mx=9
+        run: 7z a ffmpeg-4.3.2-win32-custom-nonfree.7z ffmpeg.exe ffprobe.exe ffplay.exe -mx=9
           
-      - name: Upload FFmpeg 4.3 win32 custom nonfree
+      - name: Upload FFmpeg 4.3.2 win32 custom nonfree
         uses: actions/upload-artifact@v2
         with:
-          name: ffmpeg-4.3-win32-custom-nonfree
-          path: ffmpeg-source/ffmpeg-4.3-win32-custom-nonfree.7z
+          name: ffmpeg-4.3.2-win32-custom-nonfree
+          path: ffmpeg-source/ffmpeg-4.3.2-win32-custom-nonfree.7z
           
   release:
     needs: build
@@ -47,16 +47,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: "#${{ github.run_number }}"
-          release_name: "4.3 #${{ github.run_number }}"
+          release_name: "4.3.2 #${{ github.run_number }}"
           draft: false
           prerelease: false
           
-      - name: Upload FFmpeg 4.3 win32 custom nonfree Release Asset
+      - name: Upload FFmpeg 4.3.2 win32 custom nonfree Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ffmpeg-4.3-win32-custom-nonfree/ffmpeg-4.3-win32-custom-nonfree.7z
-          asset_name: ffmpeg-4.3-win32-custom-nonfree.7z
+          asset_path: ffmpeg-4.3.2-win32-custom-nonfree/ffmpeg-4.3.2-win32-custom-nonfree.7z
+          asset_name: ffmpeg-4.3.2-win32-custom-nonfree.7z
           asset_content_type: application/x-7z-compressed
