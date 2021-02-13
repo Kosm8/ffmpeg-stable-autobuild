@@ -2,6 +2,3 @@
 	path = ffmpeg-source
 	url = git@github.com:FFmpeg/FFmpeg.git
 	branch = release/4.3
-[submodule "ffmpeg-windows-build-helpers"]
-	path = ffmpeg-windows-build-helpers
-	url = git@github.com:rdp/ffmpeg-windows-build-helpers.git
