@@ -1,5 +1,5 @@
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y -o Dpkg::Options::="--force-overwrite"
 sudo apt-get install ragel cvs yasm pax nasm gperf autogen autoconf-archive python3-setuptools
 sudo apt-get update --fix-missing
 sudo apt-get install -f
