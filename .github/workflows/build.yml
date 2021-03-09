@@ -1,4 +1,4 @@
-name: Build by workflow_dispatch
+name: Build
 on:
   workflow_dispatch:
     branches:
