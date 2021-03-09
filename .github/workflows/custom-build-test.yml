@@ -1,4 +1,4 @@
-name: Custom Build Test by workflow_dispatch
+name: Custom Build Test
 on:
   workflow_dispatch:
     branches:
