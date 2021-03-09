@@ -1,4 +1,4 @@
-name: Custom Build by workflow_dispatch
+name: Custom Build
 on:
   workflow_dispatch:
     branches:
