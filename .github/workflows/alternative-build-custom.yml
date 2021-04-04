@@ -2,7 +2,7 @@ name: Alternative Custom Build
 on:
   workflow_dispatch:
     branches:
-      - master
+      - main
       
 jobs:
   build:
