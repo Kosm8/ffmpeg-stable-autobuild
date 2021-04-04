@@ -2,7 +2,7 @@ name: Custom Build
 on:
   workflow_dispatch:
     branches:
-      - master
+      - main
       
 env:
   ffmpeg_version: n4.3.2
