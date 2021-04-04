@@ -2,7 +2,7 @@ name: Custom Build Test
 on:
   workflow_dispatch:
     branches:
-      - master
+      - main
       
 env:
   ffmpeg_version: release 4.3
