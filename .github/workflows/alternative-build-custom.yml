@@ -61,7 +61,7 @@ jobs:
           prerelease: false
           
       - name: Upload FFmpeg 4.3.2 win32 custom nonfree Release Asset
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
